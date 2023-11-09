@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  
+  <PropertyGroup>
+    <TargetType>library</TargetType>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>preview</LangVersion>
+    <AssemblyTitle>ZerethAPI</AssemblyTitle>
+    <Product>ZerethAPI</Product>
+    <Copyright>Copyright © o5zereth 2023</Copyright>
+    <OutDir>bin\$(Configuration)_$(Platform)\</OutDir>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <DebugType>Embedded</DebugType>
+    <Platforms>x64</Platforms>
+    <Configurations>Debug;Release</Configurations>
+    <DocumentationFile>ZerethAPI.xml</DocumentationFile>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <Optimize>True</Optimize>
+    <DebugSymbols>False</DebugSymbols>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+    <Optimize>False</Optimize>
+    <DebugSymbols>True</DebugSymbols>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <None Include=".editorconfig" />
+    <EditorConfigFiles Remove=".editorconfig" />
+    <None Remove="README.md" />
+    <Resource Include="README.md" CopyToOutputDirectory="PreserveNewest" />
+    <Resource Include="ZerethAPI.xml" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Lib.Harmony" Version="2.2.2" ExcludeAssets="RUNTIME" />
+    <PackageReference Include="Northwood.PluginAPI" Version="13.1.1" ExcludeAssets="RUNTIME" />
+    <PackageReference Include="System.Memory" Version="4.5.5" ExcludeAssets="RUNTIME" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" ExcludeAssets="RUNTIME" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp-firstpass" HintPath="$(SL_REFERENCES)\Assembly-CSharp-firstpass.dll" Private="False" />
+    <Reference Include="Assembly-CSharp" HintPath="$(SL_REFERENCES)\Assembly-CSharp-Publicized.dll" Private="False" />
+    <Reference Include="Mirror" HintPath="$(SL_REFERENCES)\Mirror.dll" Private="False" />
+    <Reference Include="NorthwoodLib" HintPath="$(SL_REFERENCES)\NorthwoodLib.dll" Private="False" />
+    <Reference Include="Pooling" HintPath="$(SL_REFERENCES)\Pooling.dll" Private="False" />
+    <Reference Include="UnityEngine.CoreModule" HintPath="$(SL_REFERENCES)\UnityEngine.CoreModule.dll" Private="False" />
+  </ItemGroup>
+  
+</Project>

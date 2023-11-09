@@ -1,0 +1,490 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ZerethAPI</name>
+    </assembly>
+    <members>
+        <member name="T:ZerethAPI.Extensions.CollectionExtensions">
+            <summary>
+            An extension class for collections.
+            </summary>
+        </member>
+        <member name="M:ZerethAPI.Extensions.CollectionExtensions.Toggle``1(System.Collections.Generic.HashSet{``0},``0)">
+            <summary>
+            Toggles the specified value from being in the hashset.
+            </summary>
+            <typeparam name="T">The type of elements in the hashset.</typeparam>
+            <param name="hashSet">The hashset to modify.</param>
+            <param name="value">The value to toggle.</param>
+            <returns>A value indicating whether the value is in the hashset after the operation.</returns>
+        </member>
+        <member name="T:ZerethAPI.NotSafe.AsRef`1">
+            <summary>
+            A struct representing a pointer.
+            </summary>
+            <typeparam name="T">The type to represent at the underlying pointer value.</typeparam>
+        </member>
+        <member name="M:ZerethAPI.NotSafe.AsRef`1.#ctor(`0@)">
+            <summary>
+            Creates an instance of the <see cref="T:ZerethAPI.NotSafe.AsRef`1"/> struct.
+            </summary>
+            <param name="reference">The reference of the underlying pointer.</param>
+        </member>
+        <member name="M:ZerethAPI.NotSafe.AsRef`1.#ctor(System.Void*)">
+            <summary>
+            Creates an instance of the <see cref="T:ZerethAPI.NotSafe.AsRef`1"/> struct.
+            </summary>
+            <param name="pointer">The underlying pointer.</param>
+        </member>
+        <member name="P:ZerethAPI.NotSafe.AsRef`1.Pointer">
+            <summary>
+            Gets the underlying pointer value of this instance.
+            </summary>
+        </member>
+        <member name="P:ZerethAPI.NotSafe.AsRef`1.Reference">
+            <summary>
+            Gets the reference to the underlying value.
+            </summary>
+        </member>
+        <member name="P:ZerethAPI.NotSafe.AsRef`1.IsNullReference">
+            <summary>
+            Gets a value indicating whether this instance represents a null reference.
+            </summary>
+        </member>
+        <member name="M:ZerethAPI.NotSafe.AsRef`1.Convert``1">
+            <summary>
+            Converts the current instance to the specified generic type.
+            </summary>
+            <typeparam name="NewT">The new generic type to convert to.</typeparam>
+            <returns>A new instance of the specified generic type.</returns>
+        </member>
+        <member name="M:ZerethAPI.NotSafe.AsRef`1.AssignValue(`0)">
+            <summary>
+            Assigns the value at the underlying pointer to the one provided.
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:ZerethAPI.NotSafe.AsRef`1.op_Addition(ZerethAPI.NotSafe.AsRef{`0},System.Int32)">
+            <summary>
+            Adds the specified number to the pointer offset.
+            </summary>
+            <param name="left">The left argument.</param>
+            <param name="right">The right argument.</param>
+            <returns>A new instance with the pointer offset by the specified value.</returns>
+        </member>
+        <member name="M:ZerethAPI.NotSafe.AsRef`1.op_Subtraction(ZerethAPI.NotSafe.AsRef{`0},System.Int32)">
+            <summary>
+            Subtracts the specified number from the pointer offset.
+            </summary>
+            <param name="left">The left argument.</param>
+            <param name="right">The right argument.</param>
+            <returns>A new instance with the pointer offset by the specified value.</returns>
+        </member>
+        <member name="M:ZerethAPI.NotSafe.AsRef`1.op_Explicit(ZerethAPI.NotSafe.AsRef{`0})~System.Int32">
+            <summary>
+            Converts the specified instance to an integer.
+            </summary>
+            <param name="reference">The reference to convert to an integer.</param>
+        </member>
+        <member name="T:ZerethAPI.Safe.SafeEnumerator`1">
+            <summary>
+            Supports a simple safe iteration over a generic collection, with methods to catch exceptions.
+            </summary>
+            <typeparam name="T">The type of objects to enumerate.</typeparam>
+        </member>
+        <member name="M:ZerethAPI.Safe.SafeEnumerator`1.#ctor">
+            <summary>
+            Creates an instance of the <see cref="T:ZerethAPI.Safe.SafeEnumerator`1"/> struct.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">Use of a parameterless constructor is not valid for this object.</exception>
+        </member>
+        <member name="M:ZerethAPI.Safe.SafeEnumerator`1.#ctor(System.Collections.Generic.IEnumerator{`0},System.Action{System.Exception})">
+            <summary>
+            Creates an instance of the <see cref="T:ZerethAPI.Safe.SafeEnumerator`1"/> struct.
+            </summary>
+            <param name="enumerator">The original enumerator to enumerate safely.</param>
+            <param name="onException">The action to call upon an exception being thrown.</param>
+            <exception cref="T:System.ArgumentNullException">Enumerator cannot be null.</exception>
+        </member>
+        <member name="P:ZerethAPI.Safe.SafeEnumerator`1.Current">
+            <inheritdoc/>
+        </member>
+        <member name="P:ZerethAPI.Safe.SafeEnumerator`1.System#Collections#IEnumerator#Current">
+            <inheritdoc/>
+        </member>
+        <member name="M:ZerethAPI.Safe.SafeEnumerator`1.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:ZerethAPI.Safe.SafeEnumerator`1.MoveNext">
+            <inheritdoc/>
+        </member>
+        <member name="M:ZerethAPI.Safe.SafeEnumerator`1.Reset">
+            <inheritdoc/>
+        </member>
+        <member name="T:ZerethAPI.Safe.SafeEnumeratorIgnoreException`1">
+            <summary>
+            Supports a simple safe iteration over a generic collection.
+            </summary>
+            <typeparam name="T">The type of objects to enumerate.</typeparam>
+            <remarks>When an exception is thrown within the underlying enumerator, it is caught, ignored, and the enumerator stops iterating.</remarks>
+        </member>
+        <member name="M:ZerethAPI.Safe.SafeEnumeratorIgnoreException`1.#ctor">
+            <summary>
+            Creates an instance of the <see cref="T:ZerethAPI.Safe.SafeEnumeratorIgnoreException`1"/> struct.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">Use of a parameterless constructor is not valid for this object.</exception>
+        </member>
+        <member name="M:ZerethAPI.Safe.SafeEnumeratorIgnoreException`1.#ctor(System.Collections.Generic.IEnumerator{`0})">
+            <summary>
+            Creates an instance of the <see cref="T:ZerethAPI.Safe.SafeEnumeratorIgnoreException`1"/> struct.
+            </summary>
+            <param name="enumerator">The original enumerator to enumerate safely.</param>
+            <exception cref="T:System.ArgumentNullException">Enumerator cannot be null.</exception>
+        </member>
+        <member name="P:ZerethAPI.Safe.SafeEnumeratorIgnoreException`1.Current">
+            <inheritdoc/>
+        </member>
+        <member name="P:ZerethAPI.Safe.SafeEnumeratorIgnoreException`1.System#Collections#IEnumerator#Current">
+            <inheritdoc/>
+        </member>
+        <member name="M:ZerethAPI.Safe.SafeEnumeratorIgnoreException`1.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:ZerethAPI.Safe.SafeEnumeratorIgnoreException`1.MoveNext">
+            <inheritdoc/>
+        </member>
+        <member name="M:ZerethAPI.Safe.SafeEnumeratorIgnoreException`1.Reset">
+            <inheritdoc/>
+        </member>
+        <member name="T:ZerethAPI.Utils.MECHelper">
+            <summary>
+            A utility class to assist in the usage of MEC Coroutines.
+            </summary>
+        </member>
+        <member name="M:ZerethAPI.Utils.MECHelper.Safe(System.Collections.Generic.IEnumerator{System.Single},System.Action{System.Exception})">
+            <summary>
+            Converts the specified coroutine enumerator to a safer version with exception handling.
+            </summary>
+            <param name="enumerator">The coroutine enumerator to make safe.</param>
+            <param name="onException">The action to invoke upon an exception being thrown.</param>
+            <returns>A safe version of the provided coroutine enumerator.</returns>
+        </member>
+        <member name="M:ZerethAPI.Utils.MECHelper.Kill(MEC.CoroutineHandle@)">
+            <summary>
+            Kills the coroutine at the specified reference, and assigns it to the default value.
+            </summary>
+            <param name="handle">The handle reference to kill.</param>
+        </member>
+        <member name="M:ZerethAPI.Utils.MECHelper.KillHandle(MEC.CoroutineHandle)">
+            <summary>
+            Kills the specified coroutine handle.
+            </summary>
+            <param name="handle">The handle to kill.</param>
+        </member>
+        <member name="M:ZerethAPI.Utils.MECHelper.KillAssignNew(MEC.CoroutineHandle@,MEC.CoroutineHandle)">
+            <summary>
+            Kills the coroutine at the specified reference, and assigns it to the specified value.
+            </summary>
+            <param name="handle">The handle reference to kill.</param>
+            <param name="newHandle">The new handle to assign to the specified reference.</param>
+            <returns>The newly assigned coroutine handle instance.</returns>
+        </member>
+        <member name="M:ZerethAPI.Utils.MECHelper.RunAfterFrames(System.Collections.Generic.IEnumerator{System.Single},System.UInt16)">
+            <summary>
+            Runs the specified coroutine after a number of frames.
+            </summary>
+            <param name="enumerator">The underlying coroutine.</param>
+            <param name="frameWait">The number of frames to wait.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ZerethAPI.Utils.MECHelper.RunCoroutineAfterFramesEnumerator">
+            <summary>
+            An enumerator that allows for running a coroutine after waiting the specified number of frames.
+            </summary>
+        </member>
+        <member name="P:ZerethAPI.Utils.MECHelper.RunCoroutineAfterFramesEnumerator.Current">
+            <inheritdoc/>
+        </member>
+        <member name="M:ZerethAPI.Utils.MECHelper.RunCoroutineAfterFramesEnumerator.#ctor(System.UInt16,System.Collections.Generic.IEnumerator{System.Single})">
+            <summary>
+            Creates an instance of the <see cref="T:ZerethAPI.Utils.MECHelper.RunCoroutineAfterFramesEnumerator"/> struct.
+            </summary>
+            <param name="frameWait">The number of frames to wait.</param>
+            <param name="enumerator">The underlying enumerator to iterate after waiting.</param>
+        </member>
+        <member name="M:ZerethAPI.Utils.MECHelper.RunCoroutineAfterFramesEnumerator.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:ZerethAPI.Utils.MECHelper.RunCoroutineAfterFramesEnumerator.MoveNext">
+            <inheritdoc/>
+        </member>
+        <member name="M:ZerethAPI.Utils.MECHelper.RunCoroutineAfterFramesEnumerator.Reset">
+            <inheritdoc/>
+        </member>
+        <member name="T:ZerethAPI.Utils.Transpiler.BranchType">
+            <summary>
+            An enumeration that specifies a branch operation.
+            </summary>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.Br">
+            <summary>
+            Unconditionally transfers control to a target instruction.
+            </summary>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.Unconditional">
+            <inheritdoc cref="F:ZerethAPI.Utils.Transpiler.BranchType.Br"/>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.Leave">
+            <summary>
+            Exits a protected region of code, unconditionally transferring control to a specific target instruction.
+            </summary>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.Protected">
+            <inheritdoc cref="F:ZerethAPI.Utils.Transpiler.BranchType.Leave"/>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.Brfalse">
+            <summary>
+            Transfers control to a target instruction if value is false, a null reference, or zero.
+            </summary>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.IfFalse">
+            <inheritdoc cref="F:ZerethAPI.Utils.Transpiler.BranchType.Brfalse"/>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.IfNull">
+            <inheritdoc cref="F:ZerethAPI.Utils.Transpiler.BranchType.Brfalse"/>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.IfZero">
+            <inheritdoc cref="F:ZerethAPI.Utils.Transpiler.BranchType.Brfalse"/>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.Brtrue">
+            <summary>
+            Transfers control to a target instruction if value is true, not null, or non-zero.
+            </summary>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.IfTrue">
+            <inheritdoc cref="F:ZerethAPI.Utils.Transpiler.BranchType.Brtrue"/>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.IfNotNull">
+            <inheritdoc cref="F:ZerethAPI.Utils.Transpiler.BranchType.Brtrue"/>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.IfNotZero">
+            <inheritdoc cref="F:ZerethAPI.Utils.Transpiler.BranchType.Brtrue"/>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.Switch">
+            <summary>
+            Implements a jump table.
+            </summary>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.Beq">
+            <summary>
+            Transfers control to a target instruction if two values are equal.
+            </summary>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.Equal">
+            <inheritdoc cref="F:ZerethAPI.Utils.Transpiler.BranchType.Beq"/>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.Bge">
+            <summary>
+            Transfers control to a target instruction if the first value is greater than or equal to the second value.
+            </summary>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.GreaterOrEqual">
+            <inheritdoc cref="F:ZerethAPI.Utils.Transpiler.BranchType.Bge"/>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.Bgt">
+            <summary>
+            Transfers control to a target instruction if the first value is greater than the second value.
+            </summary>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.GreaterThan">
+            <inheritdoc cref="F:ZerethAPI.Utils.Transpiler.BranchType.Bgt"/>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.Ble">
+            <summary>
+            Transfers control to a target instruction if the first value is less than or equal to the second value.
+            </summary>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.LessOrEqual">
+            <inheritdoc cref="F:ZerethAPI.Utils.Transpiler.BranchType.Ble"/>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.Blt">
+            <summary>
+            Transfers control to a target instruction if the first value is less than the second value.
+            </summary>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.LessThan">
+            <inheritdoc cref="F:ZerethAPI.Utils.Transpiler.BranchType.Blt"/>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.Bne_Un">
+            <summary>
+            Transfers control to a target instruction when two unsigned integer values or unordered float values are not equal.
+            </summary>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.NotEqual">
+            <inheritdoc cref="F:ZerethAPI.Utils.Transpiler.BranchType.Bne_Un"/>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.Bge_Un">
+            <summary>
+            Transfers control to a target instruction if the first value is greater than the second value, when comparing unsigned integer values or unordered float values.
+            </summary>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.GreaterOrEqualUnordered">
+            <inheritdoc cref="F:ZerethAPI.Utils.Transpiler.BranchType.Bge_Un"/>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.Bgt_Un">
+            <summary>
+            Transfers control to a target instruction if the first value is greater than the second value, when comparing unsigned integer values or unordered float values.
+            </summary>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.GreaterThanUnordered">
+            <inheritdoc cref="F:ZerethAPI.Utils.Transpiler.BranchType.Bgt_Un"/>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.Ble_Un">
+            <summary>
+            Transfers control to a target instruction if the first value is less than or equal to the second value, when comparing unsigned integer values or unordered float values.
+            </summary>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.LessOrEqualUnordered">
+            <inheritdoc cref="F:ZerethAPI.Utils.Transpiler.BranchType.Ble_Un"/>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.Blt_Un">
+            <summary>
+            Transfers control to a target instruction if the first value is less than the second value, when comparing unsigned integer values or unordered float values.
+            </summary>
+        </member>
+        <member name="F:ZerethAPI.Utils.Transpiler.BranchType.LessThanUnordered">
+            <inheritdoc cref="F:ZerethAPI.Utils.Transpiler.BranchType.Blt_Un"/>
+        </member>
+        <member name="T:ZerethAPI.Utils.Transpiler.InstructionHelper">
+            <summary>
+            A utility class to create common <see cref="T:HarmonyLib.CodeInstruction"/> snippets.
+            </summary>
+        </member>
+        <member name="M:ZerethAPI.Utils.Transpiler.InstructionHelper.Branch(ZerethAPI.Utils.Transpiler.BranchType,System.Reflection.Emit.Label,System.Boolean)">
+            <summary>
+            Creates a branch instruction with the specified label and form.
+            </summary>
+            <param name="type">The branch type of the instruction to be created.</param>
+            <param name="label">The label that will be branched to in the instruction.</param>
+            <param name="shortForm">Specifies whether the branch instruction should use short form (8-bit) instead of (32-bit).</param>
+            <returns>A branch instruction that branches to the specified label.</returns>
+            <exception cref="T:System.ArgumentException">Thrown when using <see cref="F:ZerethAPI.Utils.Transpiler.BranchType.Switch"/> or an unnamed enum value for the first argument.</exception>
+        </member>
+        <member name="M:ZerethAPI.Utils.Transpiler.InstructionHelper.Switch(System.Reflection.Emit.Label[])">
+            <summary>
+            Creates a switch instruction with the specified labels.
+            </summary>
+            <param name="labels">The labels this switch instruction will have.</param>
+            <returns>A switch code instruction branching to the specified labels, in order.</returns>
+        </member>
+        <member name="M:ZerethAPI.Utils.Transpiler.InstructionHelper.Switch(System.Collections.Generic.ICollection{System.Reflection.Emit.Label})">
+            <summary>
+            Creates a switch instruction with the specified labels.
+            </summary>
+            <param name="labels">The labels this switch instruction will have.</param>
+            <returns>A switch code instruction branching to the specified labels, in order.</returns>
+        </member>
+        <member name="M:ZerethAPI.Utils.Transpiler.InstructionHelper.Switch(System.Collections.Generic.IEnumerable{System.Reflection.Emit.Label})">
+            <summary>
+            Creates a switch instruction with the specified labels.
+            </summary>
+            <param name="labels">The labels this switch instruction will have.</param>
+            <returns>A switch code instruction branching to the specified labels, in order.</returns>
+        </member>
+        <member name="M:ZerethAPI.Utils.Transpiler.InstructionHelper.LoadArg(System.UInt16)">
+            <summary>
+            Creates an instruction that loads the argument at the specified index onto the stack.
+            </summary>
+            <param name="index">The index of the argument to push onto the stack.</param>
+            <returns>An instruction that loads the argument at the specified index onto the stack.</returns>
+        </member>
+        <member name="M:ZerethAPI.Utils.Transpiler.InstructionHelper.LoadArgAddr(System.UInt16)">
+            <summary>
+            Creates an instruction that loads the argument address at the specified index onto the stack.
+            </summary>
+            <param name="index">The index of the argument address to push onto the stack.</param>
+            <returns>An instruction that loads the argument address at the specified index onto the stack.</returns>
+        </member>
+        <member name="M:ZerethAPI.Utils.Transpiler.InstructionHelper.LoadLoc(System.UInt16)">
+            <summary>
+            Creates an instruction that loads the local at the specified index onto the stack.
+            </summary>
+            <param name="index">The index of the local to push onto the stack.</param>
+            <returns>An instruction that loads the local at the specified index onto the stack.</returns>
+        </member>
+        <member name="M:ZerethAPI.Utils.Transpiler.InstructionHelper.LoadLocAddr(System.UInt16)">
+            <summary>
+            Creates an instruction that loads the local address at the specified index onto the stack.
+            </summary>
+            <param name="index">The index of the local address to push onto the stack.</param>
+            <returns>An instruction that loads the local address at the specified index onto the stack.</returns>
+        </member>
+        <member name="M:ZerethAPI.Utils.Transpiler.InstructionHelper.LoadLoc(System.Reflection.Emit.LocalBuilder)">
+            <summary>
+            Creates an instruction that loads the specified local onto the stack.
+            </summary>
+            <param name="local">The local to push onto the stack.</param>
+            <returns>An instruction that loads the specified local onto the stack.</returns>
+        </member>
+        <member name="M:ZerethAPI.Utils.Transpiler.InstructionHelper.LoadLocAddr(System.Reflection.Emit.LocalBuilder)">
+            <summary>
+            Creates an instruction that loads the specified local address onto the stack.
+            </summary>
+            <param name="local">The local whose address is to be pushed onto the stack.</param>
+            <returns>An instruction that loads the specified local address onto the stack.</returns>
+        </member>
+        <member name="M:ZerethAPI.Utils.Transpiler.InstructionHelper.CreateLabels(System.Reflection.Emit.ILGenerator,System.UInt32)">
+            <summary>
+            Creates an array with new labels.
+            </summary>
+            <param name="generator">The generator to use when defining labels.</param>
+            <param name="count">The number of labels to create.</param>
+            <returns>An array containing new labels with the specified amount.</returns>
+        </member>
+        <member name="T:ZerethAPI.Utils.Transpiler.TranspilerHelper">
+            <summary>
+            A utility class to assist in creating HarmonyLib transpilers.
+            </summary>
+        </member>
+        <member name="M:ZerethAPI.Utils.Transpiler.TranspilerHelper.BeginTranspiler(System.Collections.Generic.IEnumerable{HarmonyLib.CodeInstruction},System.Collections.Generic.List{HarmonyLib.CodeInstruction}@)">
+            <summary>
+            Creates a code instruction list from the list pool using the given instructions.
+            </summary>
+            <param name="instructions">The original instructions.</param>
+            <param name="newInstructions">The new list of code instructions to rent.</param>
+        </member>
+        <member name="M:ZerethAPI.Utils.Transpiler.TranspilerHelper.FinishTranspiler(System.Collections.Generic.List{HarmonyLib.CodeInstruction})">
+            <summary>
+            Returns an enumerable of code instructions and returns the instructions list to the pool.
+            </summary>
+            <param name="newInstructions">The instructions list to return to the pool.</param>
+            <returns>Enumerable representing the finished code of the transpiler.</returns>
+        </member>
+        <member name="M:ZerethAPI.Utils.Transpiler.TranspilerHelper.Add(System.Collections.Generic.List{HarmonyLib.CodeInstruction},System.Collections.Generic.IEnumerable{HarmonyLib.CodeInstruction})">
+            <summary>
+            Adds an enumerable of code instructions to a code instruction list.
+            </summary>
+            <param name="list">The list to append the instructions to.</param>
+            <param name="instructions">The instructions to append to the list.</param>
+            <remarks>This is an extension intended for collection initialization purposes.</remarks>
+        </member>
+        <member name="M:ZerethAPI.Utils.Transpiler.TranspilerHelper.FindNthInstruction(System.Collections.Generic.List{HarmonyLib.CodeInstruction},System.Int32,System.Func{HarmonyLib.CodeInstruction,System.Boolean})">
+            <summary>
+            Finds the Nth instruction index that matches the specified predicate.
+            </summary>
+            <param name="instructions">The instructions to search.</param>
+            <param name="n">The Nth value to find.</param>
+            <param name="predicate">The predicate to match for.</param>
+            <returns>The index of the Nth instruction that matches the predicate, or -1 if not found.</returns>
+        </member>
+        <member name="M:ZerethAPI.Utils.Transpiler.TranspilerHelper.FindNthInstructionReverse(System.Collections.Generic.List{HarmonyLib.CodeInstruction},System.Int32,System.Func{HarmonyLib.CodeInstruction,System.Boolean})">
+            <summary>
+            Finds the Nth instruction index that matches the specified predicate, in reverse.
+            </summary>
+            <param name="instructions">The instructions to search.</param>
+            <param name="n">The Nth value to find in reverse.</param>
+            <param name="predicate">The predicate to match for.</param>
+            <returns>The index of the Nth instruction that matches the predicate in reverse order, or -1 if not found.</returns>
+        </member>
+    </members>
+</doc>
