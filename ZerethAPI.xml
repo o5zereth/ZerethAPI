@@ -221,6 +221,30 @@
         <member name="M:ZerethAPI.Utils.MECHelper.RunCoroutineAfterFramesEnumerator.Reset">
             <inheritdoc/>
         </member>
+        <member name="T:ZerethAPI.Utils.PatchHelper">
+            <summary>
+            A utility class to assist in HarmonyLib patching.
+            </summary>
+        </member>
+        <member name="M:ZerethAPI.Utils.PatchHelper.ApplySafetyPatch(HarmonyLib.Harmony,System.Type,System.String,System.Action{System.Exception})">
+            <summary>
+            Applies a safety patch onto a method, injecting a try-catch block.
+            </summary>
+            <param name="harmony">The harmony instance to apply this patch with.</param>
+            <param name="type">The type of the method to patch.</param>
+            <param name="name">The name of the method to patch.</param>
+            <param name="handler">The handler to invoke upon an exception in the specified method.</param>
+            <exception cref="T:System.NullReferenceException"/>
+        </member>
+        <member name="M:ZerethAPI.Utils.PatchHelper.ApplySafetyPatch(HarmonyLib.Harmony,System.Reflection.MethodInfo,System.Action{System.Exception})">
+            <summary>
+            Applies a safety patch onto a method, injecting a try-catch block.
+            </summary>
+            <param name="harmony">The harmony instance to apply this patch with.</param>
+            <param name="method">The method to patch.</param>
+            <param name="handler">The handler to invoke upon an exception in the specified method.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
         <member name="T:ZerethAPI.Utils.Transpiler.BranchType">
             <summary>
             An enumeration that specifies a branch operation.
